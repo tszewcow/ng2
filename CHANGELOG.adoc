@@ -1,0 +1,20 @@
+==== 1.0.3 (24-01-2017)
+* Migration to Bootstrap 4.0.0-alpha.6,
+* Bumped to Angular 2.4.4, ng-bootstrap 1.0.0-alpha.18, Typescript 2.1.5
+* code coverage added (new gulp task `test:coverage`)
+
+==== 1.0.2 (20-12-2016)
+* Integration of ng-bootstrap 1.0.0-alpha.14
+* Migration to Bootstrap 4.0.0-alpha.5
+* Migration to Angular 2.3.1
+* `Typings` removed in favor of npm's `@types`
+* Changes in component's styles and templates (during `gulp serve`) do not trigger transpilation any more
+* HTTP connections to the backend via the reverse proxy are ended when any error occurs
+
+==== 1.0.1 (11-10-2016)
+* Migration to Angular 2.0.2
+* Migration to gulp-typescript 3.0.2
+* Added files specific to environments
+
+==== 1.0.0 (3-10-2016)
+* Initial version after Angular 2 was released
