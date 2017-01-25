@@ -22,5 +22,5 @@ export class AppComponent {
     name: 'set name',
     status: Status[Status.New],
     comment: 'N/A'
-  }
+  };
 }

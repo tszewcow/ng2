@@ -4,7 +4,7 @@ export class LegoSet {
     externalId: string;
     name: string;
     status: string;
-    comment: string
+    comment: string;
 }
 
 export enum Status {
