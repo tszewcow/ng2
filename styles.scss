@@ -2,22 +2,8 @@
 @import "node_modules/bootstrap/scss/variables";
 
 .app {
-  app-nav {
-    display: block;
-    margin-bottom: 20px;
-  }
-
-  input.ng-invalid.ng-touched {
-    border-color: red;
-  }
-
-  form.ng-submitted {
-    input.ng-invalid {
-      border-color: red;
-    }
-  }
-
-  span.error-msg {
-    color: red;
+  div {
+    font-size: xx-large;
+    color: green;
   }
 }
