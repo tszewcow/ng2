@@ -1,0 +1,35 @@
+<div class="container">
+
+  <div class="form-group row">
+    <label for="name" class="col-lg-1 col-form-label">Name:</label>
+    <div class="col-lg-4">
+      <input id="name" type="text" [(ngModel)]="currentLegoSet.name" class="form-control form-control-danger" required maxlength="30">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="status" class="col-lg-1 col-form-label">Comment:</label>
+    <div class="col-lg-4">
+      <select [ngModel]="currentLegoSet.status" class="form-control" (ngModelChange)="onStatusChange($event)" name="sel2">
+        <option [value]="i" *ngFor="let i of statuses">{{i}}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="comment" class="col-lg-1 col-form-label">Comment:</label>
+    <div class="col-lg-4">
+      <input id="comment" type="text" [(ngModel)]="currentLegoSet.comment" class="form-control form-control-danger" maxlength="50">
+    </div>
+  </div>
+
+
+
+  <div class="row">
+    <div class="col-lg-1">
+    </div>
+    <div class="col-lg-4">
+      <button type="submit" class="btn btn-primary" (click)="save()">Save</button>
+    </div>
+  </div>
+</div>
