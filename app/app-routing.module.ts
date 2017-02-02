@@ -2,7 +2,7 @@ import { LegoSetDetailsComponent } from './lego/lego-set-details/legoSetDetails.
 import { LegoSetsComponent } from './lego/lego-sets/legoSets.component';
 import { DashboardComponent } from './lego/dashboard/dashboard.component';
 import { RouterModule, Route } from '@angular/router';
-import { ModuleWithProviders } from '@angular/core';
+import { NgModule } from '@angular/core';
 
 
 const appRoutes: Route[] = [
@@ -29,4 +29,9 @@ const appRoutes: Route[] = [
     }
 ];
 
-export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
+@NgModule({
+  imports: [ RouterModule.forRoot(appRoutes) ],
+  exports: [ RouterModule ]
+})
+export class AppRoutingModule {}
+
