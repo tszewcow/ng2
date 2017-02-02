@@ -9,6 +9,7 @@ const legoSets: LegoSet[] = [
         name: 'name1',
         status: Status[Status.New],
         comment: 'comment1',
+        imagePath: 'images/lego_placeholder.png'
     },
     {
         id: 1,
@@ -17,6 +18,7 @@ const legoSets: LegoSet[] = [
         name: 'name2',
         status: Status[Status.Used],
         comment: 'comment2',
+        imagePath: 'images/lego_placeholder.png'
     },
     {
         id: 2,
@@ -25,6 +27,7 @@ const legoSets: LegoSet[] = [
         name: 'name3',
         status: Status[Status.New],
         comment: 'comment3',
+        imagePath: 'images/lego_placeholder.png'
     },
     {
         id: 3,
@@ -33,6 +36,7 @@ const legoSets: LegoSet[] = [
         name: 'name4',
         status: Status[Status.Used],
         comment: 'comment4',
+        imagePath: 'images/lego_placeholder.png'
     },
     {
         id: 4,
@@ -41,6 +45,7 @@ const legoSets: LegoSet[] = [
         name: 'name4',
         status: Status[Status.Used],
         comment: 'comment4',
+        imagePath: 'images/lego_placeholder.png'
     },
     {
         id: 5,
@@ -49,6 +54,7 @@ const legoSets: LegoSet[] = [
         name: 'name5',
         status: Status[Status.New],
         comment: 'comment5',
+        imagePath: 'images/lego_placeholder.png'
     }
 ];
 

@@ -5,6 +5,7 @@ export class LegoSet {
     name: string;
     status: string;
     comment: string;
+    imagePath: string;
 }
 
 export enum Status {

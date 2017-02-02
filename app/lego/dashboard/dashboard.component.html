@@ -9,12 +9,15 @@
 
 <div class="container">
     <div class="row">
-        <div *ngFor="let set of legoSets" class="col-md-4">
-            <h2>{{set.name}} Set</h2>
-            <div><label>Name: </label>{{set.name}}</div>
-            <div><label>Status: </label>{{set.status}}</div>
-            <div><label>Comment: </label>{{set.comment}}</div>
-            <p><a class="btn btn-secondary" role="button" (click)="showDetails(set.id)">View details &raquo;</a></p>
+        <div *ngFor="let set of legoSets" class="card" class="col-md-4">
+            <img class="card-img-top" [src]="set.imagePath" alt="Card image cap">
+            <div class="card-block">
+                <h4 class="card-title">{{set.name}} Set</h4>
+                <div><label>Name: </label>{{set.name}}</div>
+                <div><label>Status: </label>{{set.status}}</div>
+                <div><label>Comment: </label>{{set.comment}}</div>
+                <p><a class="btn btn-secondary" role="button" (click)="showDetails(set.id)">View details &raquo;</a></p>
+            </div>
         </div>
     </div>
 </div>
