@@ -22,9 +22,33 @@ const legoSets: LegoSet[] = [
         id: 2,
         version: 0,
         externalId: '789',
-        name: 'name4',
+        name: 'name3',
         status: Status[Status.New],
         comment: 'comment3',
+    },
+    {
+        id: 3,
+        version: 0,
+        externalId: 'abc',
+        name: 'name4',
+        status: Status[Status.Used],
+        comment: 'comment4',
+    },
+    {
+        id: 4,
+        version: 0,
+        externalId: 'efg',
+        name: 'name4',
+        status: Status[Status.Used],
+        comment: 'comment4',
+    },
+    {
+        id: 5,
+        version: 0,
+        externalId: 'xyz',
+        name: 'name5',
+        status: Status[Status.New],
+        comment: 'comment5',
     }
 ];
 
@@ -33,5 +57,9 @@ export class LegoSetService {
 
     getLegoSets(): LegoSet[] {
         return legoSets;
+    }
+
+    getTop3Sets(): LegoSet[] {
+        return legoSets.slice(0, 3);
     }
 }
