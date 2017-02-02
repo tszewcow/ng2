@@ -10,8 +10,8 @@
   <div class="form-group row">
     <label for="status" class="col-lg-1 col-form-label">Comment:</label>
     <div class="col-lg-4">
-      <select [ngModel]="currentLegoSet.status" class="form-control" (ngModelChange)="onStatusChange($event)" name="sel2">
-        <option [value]="i" *ngFor="let i of statuses">{{i}}</option>
+      <select [ngModel]="currentLegoSet.status" class="form-control" (ngModelChange)="onStatusChange($event)" id="status">
+        <option [value]="status" *ngFor="let status of statuses">{{status}}</option>
       </select>
     </div>
   </div>

@@ -72,11 +72,11 @@ export class LegoSetService {
     }
 
     findOne(id: number): LegoSet {
-        return legoSets.find((item: LegoSet) => {
-            if (item.id === id) {
-                return item;
+        for (let set of legoSets) {
+            if (set.id === id) {
+                return set;
             }
-        });
+        }
     }
 
     add(legoSet: LegoSet) {
