@@ -1,4 +1,4 @@
-<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
     <button (click)="isCollapsed = !isCollapsed" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
         data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -18,21 +18,11 @@
     </div>
 </nav>
 
-<!-- Main jumbotron for a primary marketing message or call to action -->
-<div class="jumbotron">
-    <div class="container">
-        <h1 class="display-3">{{appTitle}}</h1>
-        <p>This is a demo Angular2 Lego Set Management application built with Capgemini OASP Angular2 application seed.</p>
-        <p><a class="btn btn-primary btn-lg" href="http://oasp.github.io/" role="button">Learn more about OASP &raquo;</a></p>
-    </div>
-</div>
+<router-outlet></router-outlet>
 
-<div class="container">
-    <router-outlet></router-outlet>
+<div class="container-fluid">
     <hr>
-
     <footer>
         <p>&copy; Capgemini IT Survival 2017</p>
     </footer>
 </div>
-<!-- /container -->

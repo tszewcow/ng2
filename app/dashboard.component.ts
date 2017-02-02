@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
+    appTitle: string = 'Lego Angular2 App';
     legoSets: LegoSet[];
 
     constructor(private legoSetService: LegoSetService) { }
