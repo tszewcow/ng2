@@ -1,35 +1,41 @@
 <div class="container">
-
-  <div class="form-group row">
-    <label for="name" class="col-lg-1 col-form-label">Name:</label>
-    <div class="col-lg-4">
-      <input id="name" type="text" [(ngModel)]="currentLegoSet.name" class="form-control form-control-danger" required maxlength="30">
+  <form #legoSetForm="ngForm" (ngSubmit)="save()" novalidate>
+    <div class="form-group row">
+      <label for="name" class="col-lg-1 col-form-label">Name:</label>
+      <div class="col-lg-4">
+        <input id="name" type="text" [(ngModel)]="currentLegoSet.name" name="name" class="form-control form-control-danger" required
+          maxlength="30" #name="ngModel">
+        <div [hidden]="name.valid || name.pristine" class="alert alert-danger">Name is required</div>
+      </div>
     </div>
-  </div>
 
-  <div class="form-group row">
-    <label for="status" class="col-lg-1 col-form-label">Comment:</label>
-    <div class="col-lg-4">
-      <select [ngModel]="currentLegoSet.status" class="form-control" (ngModelChange)="onStatusChange($event)" id="status">
+    <div class="form-group row">
+      <label for="status" class="col-lg-1 col-form-label">Status:</label>
+      <div class="col-lg-4">
+        <select [ngModel]="currentLegoSet.status" class="form-control" (ngModelChange)="onStatusChange($event)" id="status" name="status"
+          required #status="ngModel">
         <option [value]="status" *ngFor="let status of statuses">{{status}}</option>
       </select>
+        <div [hidden]="status.valid || status.pristine" class="alert alert-danger">Status is required</div>
+      </div>
     </div>
-  </div>
 
-  <div class="form-group row">
-    <label for="comment" class="col-lg-1 col-form-label">Comment:</label>
-    <div class="col-lg-4">
-      <input id="comment" type="text" [(ngModel)]="currentLegoSet.comment" class="form-control form-control-danger" maxlength="50">
+    <div class="form-group row">
+      <label for="comment" class="col-lg-1 col-form-label">Comment:</label>
+      <div class="col-lg-4">
+        <input id="comment" type="text" [(ngModel)]="currentLegoSet.comment" name="comment" class="form-control form-control-danger"
+          maxlength="50">
+      </div>
     </div>
-  </div>
 
 
 
-  <div class="row">
-    <div class="col-lg-1">
+    <div class="row">
+      <div class="col-lg-1">
+      </div>
+      <div class="col-lg-4">
+        <button type="submit" class="btn btn-primary" [disabled]="!legoSetForm.form.valid">Save</button>
+      </div>
     </div>
-    <div class="col-lg-4">
-      <button type="submit" class="btn btn-primary" (click)="save()">Save</button>
-    </div>
-  </div>
+  </form>
 </div>
