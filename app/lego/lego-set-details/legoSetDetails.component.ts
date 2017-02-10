@@ -1,7 +1,7 @@
 import { LegoSet, Status } from './../LegoSet';
 import { LegoSetService } from './../legoSet.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     template: require('app/lego/lego-set-details/legoSetDetails.component.html!text')
@@ -18,17 +18,16 @@ export class LegoSetDetailsComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        this.route.params.forEach((params: Params) => {
-            if (params['legoSetId']) {
-                let legoSetId: number = +params['legoSetId'];
-                let foundLegoSet: LegoSet = this.legoSetService.findOne(legoSetId);
-                if (foundLegoSet) {
-                    this.currentLegoSet = foundLegoSet;
-                } else {
-                    this.router.navigate(['lego-set-details']);
-                }
+        let id: number = +this.route.snapshot.params['legoSetId'];
+
+        if (id !== undefined) {
+            let foundLegoSet: LegoSet = this.legoSetService.findOne(id);
+            if (foundLegoSet) {
+                this.currentLegoSet = foundLegoSet;
+            } else {
+                this.router.navigate(['lego-set-details']);
             }
-        });
+        }
     }
 
     onStatusChange(newValue: string): void {

@@ -87,6 +87,7 @@ export class LegoSetService {
 
     add(legoSet: LegoSet) {
         legoSet.id = this.generateId();
+        legoSet.imagePath = 'images/lego_placeholder.png';
         legoSets.push(legoSet);
     }
 

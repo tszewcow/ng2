@@ -5,8 +5,9 @@
   h1 {
     color: green;
   }
-  nav {
-    margin-bottom: 30px;
+
+  .top-buffer {
+    margin-top: 30px;
   }
 
   .ng-valid[required], .ng-valid.required  {
