@@ -17,7 +17,9 @@ export class LegoSetsComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        this.legoSets = this.legoSetService.getLegoSets();
+        this.legoSetService.getLegoSets().subscribe((res) => {
+            this.legoSets = res;
+        });
     }
 
     editSet(id: number): void {

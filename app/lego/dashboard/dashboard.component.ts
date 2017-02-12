@@ -18,7 +18,9 @@ export class DashboardComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        this.legoSets = this.legoSetService.getTop3Sets();
+        this.legoSetService.getTop3Sets().subscribe((res) => {
+            this.legoSets = res;
+        });
     }
 
     showDetails(id: number): void {

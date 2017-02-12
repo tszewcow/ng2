@@ -1,5 +1,7 @@
 import { LegoSet, Status } from './LegoSet';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Observer } from 'rxjs/Observer';
 
 const legoSets: LegoSet[] = [
     {
@@ -69,12 +71,18 @@ export class LegoSetService {
         return highestId + 1;
     }
 
-    getLegoSets(): LegoSet[] {
-        return legoSets;
+    getLegoSets(): Observable<LegoSet[]> {
+        return Observable.create((observer: Observer<LegoSet[]>) => {
+            observer.next(legoSets);
+            observer.complete();
+        });
     }
 
-    getTop3Sets(): LegoSet[] {
-        return legoSets.slice(0, 3);
+    getTop3Sets(): Observable<LegoSet[]> {
+        return Observable.create((observer: Observer<LegoSet[]>) => {
+            observer.next(legoSets.splice(0, 3));
+            observer.complete();
+        });
     }
 
     findOne(id: number): LegoSet {
