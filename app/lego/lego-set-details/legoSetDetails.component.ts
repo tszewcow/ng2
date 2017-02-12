@@ -21,10 +21,10 @@ export class LegoSetDetailsComponent implements OnInit {
         let id: number = +this.route.snapshot.params['legoSetId'];
 
         if (id !== undefined && !isNaN(id)) {
-            this.legoSetService.findOne(id).subscribe((res) => {
+            this.legoSetService.findOneHttp(id).subscribe((res) => {
                 this.currentLegoSet = res;
             }, (error) => {
-                console.error(error());
+                console.error(error.statusText);
                 this.router.navigate(['lego-set-details']);
             });
         }
@@ -36,9 +36,12 @@ export class LegoSetDetailsComponent implements OnInit {
 
     save(): void {
         if (this.currentLegoSet.id === undefined) {
-            this.legoSetService.add(this.currentLegoSet);
+            this.legoSetService.addHttp(this.currentLegoSet)
+                .subscribe(res => this.router.navigate(['lego-sets']));
+        } else {
+            this.legoSetService.editHttp(this.currentLegoSet)
+                .subscribe(res => this.router.navigate(['lego-sets']));
         }
-        this.router.navigate(['lego-sets']);
     }
 
 }

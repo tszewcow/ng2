@@ -1,7 +1,9 @@
 import { LegoSet, Status } from './LegoSet';
 import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
+import 'rxjs/add/operator/map';
 
 const legoSets: LegoSet[] = [
     {
@@ -63,6 +65,8 @@ const legoSets: LegoSet[] = [
 @Injectable()
 export class LegoSetService {
 
+    constructor(private http: Http) { };
+
     private generateId(): number {
         if (legoSets.length === 0) {
             return 0;
@@ -78,11 +82,22 @@ export class LegoSetService {
         });
     }
 
+    getLegoSetsHttp(): Observable<LegoSet[]> {
+        return this.http.get('/services/lego-sets')
+            .map(res => res.json());
+    }
+
     getTop3Sets(): Observable<LegoSet[]> {
         return Observable.create((observer: Observer<LegoSet[]>) => {
             observer.next(legoSets.slice(0, 3));
             observer.complete();
         });
+    }
+
+    getTop3SetsHttp(): Observable<LegoSet[]> {
+        return this.http.get('/services/lego-sets')
+            .map(res => res.json())
+            .map(data => data.slice(0, 3));
     }
 
     findOne(id: number): Observable<LegoSet> {
@@ -97,7 +112,11 @@ export class LegoSetService {
                 return `Set of ${id} not found`;
             });
         });
+    }
 
+    findOneHttp(id: number): Observable<LegoSet> {
+        return this.http.get(`/services/lego-sets/${id}`)
+            .map(res => res.json());
     }
 
     add(legoSet: LegoSet) {
@@ -106,7 +125,20 @@ export class LegoSetService {
         legoSets.push(legoSet);
     }
 
+    addHttp(legoSet: LegoSet): Observable<any> {
+        legoSet.imagePath = 'images/lego_placeholder.png';
+        return this.http.post('/services/lego-sets', legoSet);
+    }
+
+    editHttp(legoSet: LegoSet): Observable<any> {
+        return this.http.put(`/services/lego-sets/${legoSet.id}`, legoSet);
+    }
+
     delete(index: number): void {
         legoSets.splice(index, 1);
+    }
+
+    deleteHttp(id: number): Observable<any> {
+        return this.http.delete(`/services/lego-sets/${id}`);
     }
 }
