@@ -80,17 +80,24 @@ export class LegoSetService {
 
     getTop3Sets(): Observable<LegoSet[]> {
         return Observable.create((observer: Observer<LegoSet[]>) => {
-            observer.next(legoSets.splice(0, 3));
+            observer.next(legoSets.slice(0, 3));
             observer.complete();
         });
     }
 
-    findOne(id: number): LegoSet {
-        for (let set of legoSets) {
-            if (set.id === id) {
-                return set;
+    findOne(id: number): Observable<LegoSet> {
+        return Observable.create((observer: Observer<LegoSet>) => {
+            for (let set of legoSets) {
+                if (set.id === id) {
+                    observer.next(set);
+                    observer.complete();
+                }
             }
-        }
+            observer.error((err: string) => {
+                return `Set of ${id} not found`;
+            });
+        });
+
     }
 
     add(legoSet: LegoSet) {

@@ -20,13 +20,13 @@ export class LegoSetDetailsComponent implements OnInit {
     ngOnInit(): void {
         let id: number = +this.route.snapshot.params['legoSetId'];
 
-        if (id !== undefined) {
-            let foundLegoSet: LegoSet = this.legoSetService.findOne(id);
-            if (foundLegoSet) {
-                this.currentLegoSet = foundLegoSet;
-            } else {
+        if (id !== undefined && !isNaN(id)) {
+            this.legoSetService.findOne(id).subscribe((res) => {
+                this.currentLegoSet = res;
+            }, (error) => {
+                console.error(error());
                 this.router.navigate(['lego-set-details']);
-            }
+            });
         }
     }
 

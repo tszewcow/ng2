@@ -16,7 +16,7 @@
                 <div><label>Name: </label>{{set.name}}</div>
                 <div><label>Status: </label>{{set.status}}</div>
                 <div><label>Comment: </label>{{set.comment}}</div>
-                <p><a class="btn btn-secondary" role="button" (click)="showDetails(set.id)">View details &raquo;</a></p>
+                <p><a class="btn btn-secondary" role="button" [routerLink]="['/lego-set-details', set.id]">View details &raquo;</a></p>
             </div>
         </div>
     </div>

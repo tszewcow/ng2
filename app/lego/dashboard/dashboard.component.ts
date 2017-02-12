@@ -22,8 +22,4 @@ export class DashboardComponent implements OnInit {
             this.legoSets = res;
         });
     }
-
-    showDetails(id: number): void {
-        this.router.navigate(['lego-set-details', id]);
-    }
 }
