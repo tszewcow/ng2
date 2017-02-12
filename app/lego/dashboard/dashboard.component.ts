@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        this.legoSetService.getTop3Sets().subscribe((res) => {
+        this.legoSetService.getTop3SetsHttp().subscribe((res) => {
             this.legoSets = res;
         });
     }

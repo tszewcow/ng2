@@ -1,0 +1,58 @@
+{
+  "lego-sets": [
+    {
+      "id": 0,
+      "version": 0,
+      "externalId": "123",
+      "name": "name1",
+      "status": "New",
+      "comment": "comment1",
+      "imagePath": "images/lego_placeholder.png"
+    },
+    {
+      "id": 1,
+      "version": 0,
+      "externalId": "456",
+      "name": "name2",
+      "status": "Used",
+      "comment": "comment2",
+      "imagePath": "images/lego_placeholder.png"
+    },
+    {
+      "id": 2,
+      "version": 0,
+      "externalId": "789",
+      "name": "name3",
+      "status": "New",
+      "comment": "comment3",
+      "imagePath": "images/lego_placeholder.png"
+    },
+    {
+      "id": 3,
+      "version": 0,
+      "externalId": "abc",
+      "name": "name4",
+      "status": "Used",
+      "comment": "comment4",
+      "imagePath": "images/lego_placeholder.png"
+    },
+    {
+      "id": 4,
+      "version": 0,
+      "externalId": "efg",
+      "name": "name4",
+      "status": "Used",
+      "comment": "comment4",
+      "imagePath": "images/lego_placeholder.png"
+    },
+    {
+      "id": 5,
+      "version": 0,
+      "externalId": "xyz",
+      "name": "name5",
+      "status": "New",
+      "comment": "comment5",
+      "imagePath": "images/lego_placeholder.png"
+    }
+  ]
+}

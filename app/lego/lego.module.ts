@@ -6,10 +6,11 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpModule } from '@angular/http';
 
 
 @NgModule({
-    imports: [CommonModule, RouterModule, FormsModule],
+    imports: [CommonModule, RouterModule, FormsModule, HttpModule],
     declarations: [DashboardComponent, LegoSetsComponent, LegoSetDetailsComponent],
     exports: [DashboardComponent, LegoSetsComponent, LegoSetDetailsComponent],
     providers: [LegoSetService]

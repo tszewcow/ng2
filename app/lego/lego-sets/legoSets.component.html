@@ -11,7 +11,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let set of legoSets, let i = index">
+            <tr *ngFor="let set of legoSets">
                 <th>{{set.id}}</th>
                 <td>{{set.externalId}}</td>
                 <td>{{set.name}}</td>
@@ -19,7 +19,7 @@
                 <td>{{set.comment}}</td>
                 <td>
                     <button class="btn btn-primary" (click)="editSet(set.id)">Edit</button>
-                    <button class="btn btn-danger" (click)="deleteSet(i)">Delete</button>
+                    <button class="btn btn-danger" (click)="deleteSet(set.id)">Delete</button>
                 </td>
             </tr>
         </tbody>
