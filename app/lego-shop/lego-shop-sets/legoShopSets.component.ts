@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LegoShopSet } from './LegoShopSet';
-import { LegoShopService } from './legoShop.service';
+import { LegoShopSet } from './../LegoShopSet';
+import { LegoShopService } from './../legoShop.service';
 
 @Component({
-  template: require('app/lego-shop/legoShop.component.html!text')
+  template: require('app/lego-shop/lego-shop-sets/legoShopSets.component.html!text')
 })
-export class LegoShopComponent implements OnInit {
+export class LegoShopSetsComponent implements OnInit {
 
   legoShopSets: LegoShopSet[];
 

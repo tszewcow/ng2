@@ -12,17 +12,17 @@ import {
     ResponseOptions
 } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
-import { LegoShopComponent } from './legoShop.component';
-import { LegoShopService } from './legoShop.service';
+import { LegoShopSetsComponent } from './legoShopSets.component';
+import { LegoShopService } from './../legoShop.service';
 
 describe('Component: LegoShop', function () {
-  let fixture: ComponentFixture<LegoShopComponent>;
-  let component: LegoShopComponent;
+  let fixture: ComponentFixture<LegoShopSetsComponent>;
+  let component: LegoShopSetsComponent;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ RouterTestingModule ],
-      declarations: [LegoShopComponent],
+      declarations: [LegoShopSetsComponent],
       providers: [
         LegoShopService,
         {
@@ -36,14 +36,14 @@ describe('Component: LegoShop', function () {
         BaseRequestOptions
       ]
     }).compileComponents().then(() => {
-      fixture = TestBed.createComponent(LegoShopComponent as Type<LegoShopComponent>);
+      fixture = TestBed.createComponent(LegoShopSetsComponent as Type<LegoShopSetsComponent>);
       component = fixture.componentInstance;
     });
   }));
 
   it('should instantiate component', () => {
     fixture.detectChanges(); // triggers LegoShopComponent.ngOnInit()
-    expect(component instanceof LegoShopComponent).toBe(true, 'should create LegoShopComponent');
+    expect(component instanceof LegoShopSetsComponent).toBe(true, 'should create LegoShopSetsComponent');
   });
 
   it('should render info, that table is empty', () => {
