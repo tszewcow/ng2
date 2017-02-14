@@ -34,7 +34,7 @@ export class LegoShopService {
             .catch(this.handleError);
     }
 
-    findOneHttp(id: number): Observable<LegoShopSet> {
+    findOneHttp(id: string): Observable<LegoShopSet> {
 
         let params = new URLSearchParams();
         let options = new RequestOptions({
@@ -43,9 +43,7 @@ export class LegoShopService {
 
         params.set('key', 'JfDxhwY7Cn');
         params.set('format', 'json');
-        if (id) {
-            params.set('set_id', id.toString());
-        }
+        params.set('set_id', id);
 
         return this.http.get(this.rebrickableApiUrl + this.getSetApiService, options)
             .map(this.extractDataLegoOneSet)

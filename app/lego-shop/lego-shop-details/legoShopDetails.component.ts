@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { LegoShopSet } from './../LegoShopSet';
+import { LegoShopSet } from './../../shared/LegoShopSet';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LegoShopService } from './../legoShop.service';
+import { LegoShopService } from './../../shared/legoShop.service';
 
 @Component({
     template: require('app/lego-shop/lego-shop-details/legoShopDetails.component.html!text')
@@ -15,12 +15,18 @@ export class LegoShopDetailsComponent implements OnInit {
         private router: Router) { }
 
     ngOnInit(): void {
-        let id: number = this.route.snapshot.params['legoShopSetId'];
+        let id: string = this.route.snapshot.params['legoShopSetId'];
 
-        this.legoShopService.findOneHttp(id).subscribe((res) => {
-            this.currentLegoShopSet = res;
-        }, (error) => {
-            console.error(error.statusText);
-        });
+        if (id) {
+            this.legoShopService.findOneHttp(id).subscribe((res) => {
+                this.currentLegoShopSet = res;
+            }, (error) => {
+                console.error(error.statusText);
+            });
+        }
+    }
+
+    convertToLegoSet(): void {
+        this.router.navigate(['lego-set-details', { legoShopSetId: this.currentLegoShopSet.set_id }]);
     }
 }
