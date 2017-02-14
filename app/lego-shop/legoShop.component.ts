@@ -7,11 +7,12 @@ import { LegoShopService } from './legoShop.service';
 })
 export class LegoShopComponent implements OnInit {
 
-  legoSets: LegoShopSet[];
+  legoShopSets: LegoShopSet[];
 
   constructor(private legoShopService: LegoShopService) { }
 
   ngOnInit() {
-    this.legoShopService.getLegoSetsHttp().subscribe(legoSets => this.legoSets = legoSets);
+    this.legoShopService.getLegoSetsHttp().subscribe((legoShopSets) =>
+      this.legoShopSets = legoShopSets);
   }
 }

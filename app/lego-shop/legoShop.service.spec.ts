@@ -36,7 +36,7 @@ describe('LegoShopService', () => {
             inject([LegoShopService, MockBackend], (legoShopService: LegoShopService, mockBackend: MockBackend) => {
 
                 const mockResponse = {
-                    data: [
+                    results: [
                         {
                             set_id: '1',
                             pieces: '100',

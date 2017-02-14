@@ -1,6 +1,6 @@
 import { LegoShopSet } from './LegoShopSet';
 import { Injectable } from '@angular/core';
-import { Http, Headers, URLSearchParams, RequestOptions, Response } from '@angular/http';
+import { Http, URLSearchParams, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
@@ -9,14 +9,12 @@ import 'rxjs/add/operator/map';
 export class LegoShopService {
 
     private rebrickableApiUrl = 'https://rebrickable.com/api/search';
-    private headers = new Headers({ 'Content-Type': 'application/json' });
 
     constructor(private http: Http) { };
 
     getLegoSetsHttp(query?: string): Observable<LegoShopSet[]> {
         let params = new URLSearchParams();
         let options = new RequestOptions({
-            headers: this.headers,
             search: params
         });
 
@@ -34,7 +32,7 @@ export class LegoShopService {
 
     private extractData(res: Response) {
         let body = res.json();
-        return body.data || {};
+        return body.results || {};
     }
 
     private handleError(error: Response | any) {
