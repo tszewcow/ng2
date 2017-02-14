@@ -68,5 +68,29 @@ describe('LegoShopService', () => {
                     expect(legoShopSets[1].theme1).toEqual('Lego Set 2');
                 });
             }));
+
+        it('should return an Observable<LegoShopSet>',
+            inject([LegoShopService, MockBackend], (legoShopService: LegoShopService, mockBackend: MockBackend) => {
+
+                const mockResponse =
+                    [{
+                        set_id: '1',
+                        pieces: '100',
+                        descr: 'Description 1',
+                        theme: 'Lego Set 1',
+                        year: '2017',
+                        img_sm: 'images/lego_placeholder.png'
+                    }];
+
+                mockBackend.connections.subscribe((connection: any) => {
+                    connection.mockRespond(new Response(new ResponseOptions({
+                        body: JSON.stringify(mockResponse)
+                    })));
+                });
+
+                legoShopService.findOneHttp(1).subscribe((legoShopSet) => {
+                    expect(legoShopSet.theme).toEqual('Lego Set 1');
+                });
+            }));
     });
 });

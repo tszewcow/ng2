@@ -8,7 +8,11 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class LegoShopService {
 
-    private rebrickableApiUrl = 'https://rebrickable.com/api/search';
+    private rebrickableApiUrl = 'https://rebrickable.com/api/';
+
+    private searchApiService = 'search';
+
+    private getSetApiService = 'get_set';
 
     constructor(private http: Http) { };
 
@@ -25,12 +29,35 @@ export class LegoShopService {
             params.set('query', query);
         }
 
-        return this.http.get(this.rebrickableApiUrl, options)
-            .map(this.extractData)
+        return this.http.get(this.rebrickableApiUrl + this.searchApiService, options)
+            .map(this.extractDataLegoSets)
             .catch(this.handleError);
     }
 
-    private extractData(res: Response) {
+    findOneHttp(id: number): Observable<LegoShopSet> {
+
+        let params = new URLSearchParams();
+        let options = new RequestOptions({
+            search: params
+        });
+
+        params.set('key', 'JfDxhwY7Cn');
+        params.set('format', 'json');
+        if (id) {
+            params.set('set_id', id.toString());
+        }
+
+        return this.http.get(this.rebrickableApiUrl + this.getSetApiService, options)
+            .map(this.extractDataLegoOneSet)
+            .catch(this.handleError);
+    }
+
+    private extractDataLegoOneSet(res: Response) {
+        let body = res.json();
+        return body[0] || {};
+    }
+
+    private extractDataLegoSets(res: Response) {
         let body = res.json();
         return body.results || {};
     }

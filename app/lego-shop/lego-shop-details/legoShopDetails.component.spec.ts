@@ -12,17 +12,17 @@ import {
     ResponseOptions
 } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
-import { LegoShopComponent } from './legoShop.component';
-import { LegoShopService } from './legoShop.service';
+import { LegoShopDetailsComponent } from './legoShopDetails.component';
+import { LegoShopService } from './../legoShop.service';
 
-describe('Component: LegoShop', function () {
-  let fixture: ComponentFixture<LegoShopComponent>;
-  let component: LegoShopComponent;
+describe('Component: LegoShopDetails', function () {
+  let fixture: ComponentFixture<LegoShopDetailsComponent>;
+  let component: LegoShopDetailsComponent;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ RouterTestingModule ],
-      declarations: [LegoShopComponent],
+      declarations: [LegoShopDetailsComponent],
       providers: [
         LegoShopService,
         {
@@ -36,19 +36,13 @@ describe('Component: LegoShop', function () {
         BaseRequestOptions
       ]
     }).compileComponents().then(() => {
-      fixture = TestBed.createComponent(LegoShopComponent as Type<LegoShopComponent>);
+      fixture = TestBed.createComponent(LegoShopDetailsComponent as Type<LegoShopDetailsComponent>);
       component = fixture.componentInstance;
     });
   }));
 
   it('should instantiate component', () => {
-    fixture.detectChanges(); // triggers LegoShopComponent.ngOnInit()
-    expect(component instanceof LegoShopComponent).toBe(true, 'should create LegoShopComponent');
-  });
-
-  it('should render info, that table is empty', () => {
-    fixture.detectChanges();
-    let compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('p').textContent).toContain('Result table is empty.');
+    fixture.detectChanges(); // triggers LegoShopDetailsComponent.ngOnInit()
+    expect(component instanceof LegoShopDetailsComponent).toBe(true, 'should create LegoShopDetailsComponent');
   });
 });
