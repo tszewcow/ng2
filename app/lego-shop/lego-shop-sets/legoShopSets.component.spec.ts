@@ -13,7 +13,7 @@ import {
 } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 import { LegoShopSetsComponent } from './legoShopSets.component';
-import { LegoShopService } from './../legoShop.service';
+import { LegoShopService } from './../../shared/legoShop.service';
 
 describe('Component: LegoShop', function () {
   let fixture: ComponentFixture<LegoShopSetsComponent>;

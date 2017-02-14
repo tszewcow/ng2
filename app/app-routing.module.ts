@@ -30,6 +30,10 @@ const appRoutes: Route[] = [
         component: LegoSetDetailsComponent
     },
     {
+        path: 'lego-set-details/:legoShopSetId',
+        component: LegoSetDetailsComponent
+    },
+    {
         path: 'lego-shop',
         component: LegoShopSetsComponent
     },

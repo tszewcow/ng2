@@ -88,7 +88,7 @@ describe('LegoShopService', () => {
                     })));
                 });
 
-                legoShopService.findOneHttp(1).subscribe((legoShopSet) => {
+                legoShopService.findOneHttp('1').subscribe((legoShopSet) => {
                     expect(legoShopSet.theme).toEqual('Lego Set 1');
                 });
             }));
