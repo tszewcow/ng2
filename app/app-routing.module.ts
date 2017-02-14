@@ -38,6 +38,10 @@ const appRoutes: Route[] = [
         component: LegoShopSetsComponent
     },
     {
+        path: 'lego-shop/:search',
+        component: LegoShopSetsComponent
+    },
+    {
         path: 'lego-shop-details/:legoShopSetId',
         component: LegoShopDetailsComponent
     }

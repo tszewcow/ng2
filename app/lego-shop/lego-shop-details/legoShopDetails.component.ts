@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { LegoShopSet } from './../../shared/LegoShopSet';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LegoShopService } from './../../shared/legoShop.service';
@@ -6,17 +6,21 @@ import { LegoShopService } from './../../shared/legoShop.service';
 @Component({
     template: require('app/lego-shop/lego-shop-details/legoShopDetails.component.html!text')
 })
-export class LegoShopDetailsComponent implements OnInit {
+export class LegoShopDetailsComponent {
 
     currentLegoShopSet: LegoShopSet = new LegoShopSet();
 
     constructor(private legoShopService: LegoShopService,
         private route: ActivatedRoute,
-        private router: Router) { }
+        private router: Router) {
 
-    ngOnInit(): void {
-        let id: string = this.route.snapshot.params['legoShopSetId'];
+        route.params.subscribe(val => {
+            let id: string = this.route.snapshot.params['legoShopSetId'];
+            this.findLegoShopSetById(id);
+        });
+    }
 
+    findLegoShopSetById(id: string): void {
         if (id) {
             this.legoShopService.findOneHttp(id).subscribe((res) => {
                 this.currentLegoShopSet = res;
