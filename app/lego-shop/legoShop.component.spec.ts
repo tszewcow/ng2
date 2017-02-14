@@ -45,9 +45,9 @@ describe('Component: LegoShop', function () {
     expect(component instanceof LegoShopComponent).toBe(true, 'should create LegoShopComponent');
   });
 
-  it('should render title in a h1 tag', () => {
+  it('should render info, that table is empty', () => {
     fixture.detectChanges();
     let compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Placeholder for lego shop');
+    expect(compiled.querySelector('p').textContent).toContain('Result table is empty.');
   });
 });

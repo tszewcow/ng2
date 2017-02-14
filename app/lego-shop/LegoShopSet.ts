@@ -4,5 +4,5 @@ export class LegoShopSet {
     descr: string;
     theme1: string;
     year: string;
-    img_sm: string;
+    img_tn: string;
 }

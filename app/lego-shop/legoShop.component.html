@@ -1,3 +1,32 @@
 <div class="container top-buffer">
-    <h1>Placeholder for lego shop</h1> 
+    <table *ngIf="legoShopSets && legoShopSets.length > 0" class="table table-striped table-hover">
+        <thead class="thead-inverse">
+            <tr>
+                <th>Thumbnail</th>
+                <th>Set ID</th>
+                <th>Piece Count</th>
+                <th>Description</th>
+                <th>Theme</th>
+                <th>Year</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let set of legoShopSets">
+                <td>
+                    <img style="height: 100px;" [src]="set.img_tn" alt="Lego set image" class="img-thumbnail"/>
+                </td>
+                <td>{{set.set_id}}</td>
+                <td>{{set.pieces}}</td>
+                <td>{{set.descr}}</td>
+                <td>{{set.theme1}}</td>
+                <td>{{set.year}}</td>
+                <td>Placeholder for buttons</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div *ngIf="!legoShopSets || legoShopSets.length == 0">
+        <p>Result table is empty.</p>
+    </div>
 </div>
