@@ -4,6 +4,7 @@ import { DashboardComponent } from './lego/dashboard/dashboard.component';
 import { RouterModule, Route } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { LegoShopComponent } from './lego-shop/legoShop.component';
+import { LegoShopDetailsComponent } from './lego-shop/lego-shop-details/legoShopDetails.component';
 
 
 const appRoutes: Route[] = [
@@ -31,6 +32,10 @@ const appRoutes: Route[] = [
     {
         path: 'lego-shop',
         component: LegoShopComponent
+    },
+    {
+        path: 'lego-shop-details/:legoShopSetId',
+        component: LegoShopDetailsComponent
     }
 ];
 

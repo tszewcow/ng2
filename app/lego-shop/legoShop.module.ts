@@ -1,4 +1,5 @@
 import { LegoShopComponent } from './legoShop.component';
+import { LegoShopDetailsComponent } from './lego-shop-details/legoShopDetails.component';
 import { LegoShopService } from './legoShop.service';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -8,7 +9,7 @@ import { HttpModule } from '@angular/http';
 
 @NgModule({
     imports: [CommonModule, RouterModule, HttpModule],
-    declarations: [LegoShopComponent],
+    declarations: [LegoShopComponent, LegoShopDetailsComponent],
     exports: [ ],
     providers: [LegoShopService]
 })

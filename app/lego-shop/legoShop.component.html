@@ -21,7 +21,9 @@
                 <td>{{set.descr}}</td>
                 <td>{{set.theme1}}</td>
                 <td>{{set.year}}</td>
-                <td>Placeholder for buttons</td>
+                <td>
+                    <button class="btn btn-primary" (click)="showDetails(set.set_id)">Show details</button>
+                </td>
             </tr>
         </tbody>
     </table>
