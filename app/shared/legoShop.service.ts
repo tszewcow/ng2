@@ -50,6 +50,10 @@ export class LegoShopService {
             .catch(this.handleError);
     }
 
+    getTop3SetsHttp(): Observable<LegoShopSet[]> {
+        return this.getLegoSetsHttp('Fire').map(data => data.slice(0, 3));
+    }
+
     private extractDataLegoOneSet(res: Response) {
         let body = res.json();
         return body[0] || {};

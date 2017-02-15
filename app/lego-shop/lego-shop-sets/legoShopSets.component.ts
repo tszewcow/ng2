@@ -14,7 +14,7 @@ export class LegoShopSetsComponent {
     private route: ActivatedRoute,
     private router: Router) {
       route.params.subscribe(val => {
-        let searchPhrase: string = val['search'];
+        let searchPhrase: string = val['query'];
         this.searchBySearchPhrase(searchPhrase);
     });
   }
