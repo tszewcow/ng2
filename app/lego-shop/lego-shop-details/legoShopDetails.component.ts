@@ -22,7 +22,7 @@ export class LegoShopDetailsComponent {
 
     findLegoShopSetById(id: string): void {
         if (id) {
-            this.legoShopService.findOneHttp(id).subscribe((res) => {
+            this.legoShopService.findOne(id).subscribe((res) => {
                 this.currentLegoShopSet = res;
             }, (error) => {
                 console.error(error.statusText);

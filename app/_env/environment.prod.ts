@@ -1,3 +1,4 @@
 export const environment = {
-  enableProdMode: true
+  enableProdMode: true,
+  online: true
 };
