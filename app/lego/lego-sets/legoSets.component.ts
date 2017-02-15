@@ -23,7 +23,7 @@ export class LegoSetsComponent implements OnInit {
     }
 
     editSet(id: number): void {
-        this.router.navigate(['lego-set-details', { legoSetId: id }]);
+        this.router.navigate(['lego-set-details', id]);
     }
 
     deleteSet(id: number) {

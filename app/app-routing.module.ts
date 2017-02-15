@@ -1,6 +1,6 @@
 import { LegoSetDetailsComponent } from './lego/lego-set-details/legoSetDetails.component';
 import { LegoSetsComponent } from './lego/lego-sets/legoSets.component';
-import { DashboardComponent } from './lego/dashboard/dashboard.component';
+import { DashboardComponent } from './lego-shop/dashboard/dashboard.component';
 import { RouterModule, Route } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { LegoShopSetsComponent } from './lego-shop/lego-shop-sets/legoShopSets.component';
@@ -30,15 +30,7 @@ const appRoutes: Route[] = [
         component: LegoSetDetailsComponent
     },
     {
-        path: 'lego-set-details/:legoShopSetId',
-        component: LegoSetDetailsComponent
-    },
-    {
         path: 'lego-shop',
-        component: LegoShopSetsComponent
-    },
-    {
-        path: 'lego-shop/:search',
         component: LegoShopSetsComponent
     },
     {

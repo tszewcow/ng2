@@ -9,14 +9,14 @@
 
 <div class="container">
     <div class="row">
-        <div *ngFor="let set of legoSets" class="card" class="col-md-4">
-            <img class="card-img-top" [src]="set.imagePath" alt="Card image cap">
+        <div *ngFor="let set of legoShopSets" class="card" class="col-md-4">
+            <img style="height: 150px;" class="card-img-top" [src]="set.img_tn" alt="Card image cap">
             <div class="card-block">
-                <h4 class="card-title">{{set.name}} Set</h4>
-                <div><label>Name: </label>{{set.name}}</div>
-                <div><label>Status: </label>{{set.status}}</div>
-                <div><label>Comment: </label>{{set.comment}}</div>
-                <p><a class="btn btn-secondary" role="button" [routerLink]="['/lego-set-details', set.id]">View details &raquo;</a></p>
+                <h4 class="card-title">{{set.descr}} Set</h4>
+                <div><label>Name: </label>{{set.descr}}</div>
+                <div><label>Piece count: </label>{{set.pieces}}</div>
+                <div><label>Theme: </label>{{set.theme}}</div>
+                <p><a class="btn btn-secondary" role="button" [routerLink]="['/lego-shop-details', set.set_id]">View details &raquo;</a></p>
             </div>
         </div>
     </div>

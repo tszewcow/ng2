@@ -13,7 +13,7 @@ export class AppComponent {
 
   search(): void {
         if (this.currentSearchPhrase) {
-            this.router.navigate(['lego-shop', this.currentSearchPhrase]);
+            this.router.navigate(['lego-shop', {query: this.currentSearchPhrase}]);
         } else {
             this.router.navigate(['lego-shop']);
         }

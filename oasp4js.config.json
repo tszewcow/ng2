@@ -9,7 +9,7 @@
   },
   "proxy": {
     "servicesPath": "\/services\/",
-    "baseUrl": "http://localhost:4000",
+    "baseUrl": "http://localhost:4050",
     "context": "/"
   }
 }

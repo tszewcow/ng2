@@ -1,5 +1,4 @@
 import { LegoSetsComponent } from './lego-sets/legoSets.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { LegoSetDetailsComponent } from './lego-set-details/legoSetDetails.component';
 import { LegoSetService } from './legoSet.service';
 import { FormsModule } from '@angular/forms';
@@ -11,8 +10,8 @@ import { HttpModule } from '@angular/http';
 
 @NgModule({
     imports: [CommonModule, RouterModule, FormsModule, HttpModule],
-    declarations: [DashboardComponent, LegoSetsComponent, LegoSetDetailsComponent],
-    exports: [DashboardComponent, LegoSetsComponent, LegoSetDetailsComponent],
+    declarations: [LegoSetsComponent, LegoSetDetailsComponent],
+    exports: [ ],
     providers: [LegoSetService]
 })
 export class LegoModule {
