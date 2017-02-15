@@ -18,7 +18,7 @@ export class DashboardComponent {
         private router: Router
     ) {
         route.params.subscribe(val => {
-            this.legoSetService.getTop3SetsHttp().subscribe((res) => {
+            this.legoSetService.getTop3Sets().subscribe((res) => {
                 this.legoShopSets = res;
             });
         });

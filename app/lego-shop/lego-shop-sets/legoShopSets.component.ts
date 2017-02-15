@@ -21,10 +21,10 @@ export class LegoShopSetsComponent {
 
   searchBySearchPhrase(searchPhrase: string) {
     if (searchPhrase) {
-      this.legoShopService.getLegoSetsHttp(searchPhrase).subscribe((legoShopSets) =>
+      this.legoShopService.getLegoSets(searchPhrase).subscribe((legoShopSets) =>
         this.legoShopSets = legoShopSets);
     } else {
-      this.legoShopService.getLegoSetsHttp().subscribe((legoShopSets) =>
+      this.legoShopService.getLegoSets().subscribe((legoShopSets) =>
         this.legoShopSets = legoShopSets);
     }
   }

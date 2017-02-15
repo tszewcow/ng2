@@ -35,7 +35,7 @@ export class LegoSetDetailsComponent {
     }
 
     showLegoSetDetailsByLegoShopSetId(legoShopSetId: string) {
-        this.legoShopService.findOneHttp(legoShopSetId).subscribe((legoShopSet) => {
+        this.legoShopService.findOne(legoShopSetId).subscribe((legoShopSet) => {
             this.currentLegoSet = new LegoSet();
             this.currentLegoSet.externalId = legoShopSet.set_id;
             this.currentLegoSet.name = legoShopSet.descr;
