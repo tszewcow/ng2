@@ -1,0 +1,19 @@
+<div class="container top-buffer">
+
+    <div class="card" style="width: 20rem;">
+        <img style="max-height: 300px" class="card-img-top" [src]="currentLegoShopSet.img_tn" alt="currentLegoShopSet.descr">
+        <div class="card-block">
+            <h4 class="card-title">{{currentLegoShopSet.descr}}</h4>
+            <p class="card-text">{{currentLegoShopSet.set_id}}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><label><b>Year: </b>{{currentLegoShopSet.year}}</label></li>
+            <li class="list-group-item"><label><b>Piece Count: </b>{{currentLegoShopSet.pieces}}</label></li>
+            <li class="list-group-item"><label><b>Theme: </b>{{currentLegoShopSet.theme1}}</label></li>
+        </ul>
+        <div class="card-block">
+            <button class="btn btn-primary" (click)="convertToLegoSet()">I want it!</button>
+            <a routerLink="/lego-shop" class="card-link">Back</a>
+        </div>
+    </div>
+</div>

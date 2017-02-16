@@ -1,21 +1,24 @@
 <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
     <button (click)="isCollapsed = !isCollapsed" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-        data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-      </button>
-    <a class="navbar-brand" routerLink="/dashboard">LegoApp</a>
+        </button>
+        <a class="navbar-brand" routerLink="/dashboard">LegoApp</a>
 
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault" [ngClass]="{collapse: isCollapsed}">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/lego-sets" routerLinkActive="active">Lego Sets</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/lego-set-details" routerLinkActive="active">Add New</a>
-            </li>
-
-        </ul>
-    </div>
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault" [ngClass]="{collapse: isCollapsed}">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/lego-shop" routerLinkActive="active">Lego shop</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/lego-sets" routerLinkActive="active">Lego sets</a>
+                </li>
+            </ul>
+            <form (ngSubmit)="search()" class="form-inline my-2 my-lg-0" novalidate>
+                <input [(ngModel)]="currentSearchPhrase" name="searchPhrase" class="form-control mr-sm-2" type="text" placeholder="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
 </nav>
 
 <router-outlet></router-outlet>

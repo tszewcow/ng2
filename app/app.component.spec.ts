@@ -3,6 +3,7 @@ import {AppComponent} from './app.component';
 import {TestBed, async} from '@angular/core/testing';
 import {Type} from '@angular/core';
 import {RouterTestingModule} from '@angular/router/testing';
+import { FormsModule } from '@angular/forms';
 import {ComponentFixture} from '@angular/core/testing/component_fixture';
 
 describe('AppComponent with TCB', function () {
@@ -11,7 +12,7 @@ describe('AppComponent with TCB', function () {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule, FormsModule],
       declarations: [AppComponent]
     }).compileComponents().then(() => {
       fixture = TestBed.createComponent(AppComponent as Type<AppComponent>);

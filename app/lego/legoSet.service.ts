@@ -94,12 +94,6 @@ export class LegoSetService {
         });
     }
 
-    getTop3SetsHttp(): Observable<LegoSet[]> {
-        return this.http.get('/services/lego-sets')
-            .map(res => res.json())
-            .map(data => data.slice(0, 3));
-    }
-
     findOne(id: number): Observable<LegoSet> {
         return Observable.create((observer: Observer<LegoSet>) => {
             for (let set of legoSets) {

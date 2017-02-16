@@ -261,5 +261,5 @@ npm install -g json-server
 Start json-server from the project root directory
 
 ----
-json-server --watch db.json --routes routes.json --port 4000
+json-server --watch db.json --routes routes.json --port 4050
 ----
