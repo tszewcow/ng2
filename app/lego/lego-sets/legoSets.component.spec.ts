@@ -16,14 +16,14 @@ describe('legoSets Component tests', () => {
     let fixture: ComponentFixture<LegoSetsComponent>;
     let component: LegoSetsComponent;
     let legoSetsServiceMock = {
-        getLegoSetsHttp: jasmine.createSpy('setsSpy').and.returnValue(
+        getLegoSets: jasmine.createSpy('setsSpy').and.returnValue(
             Observable.create((observer: Observer<any>) => {
                 observer.next([{
                     name: 'set',
                     id: 0
                 }]);
             })),
-        deleteHttp: jasmine.createSpy('deleteSpy').and.returnValue(
+        delete: jasmine.createSpy('deleteSpy').and.returnValue(
             Observable.create((observer: Observer<any>) => {
                 observer.next({ status: 200 });
             })
@@ -50,7 +50,7 @@ describe('legoSets Component tests', () => {
         fixture.detectChanges();
 
         // then
-        expect(legoSetsServiceMock.getLegoSetsHttp).toHaveBeenCalled();
+        expect(legoSetsServiceMock.getLegoSets).toHaveBeenCalled();
         expect(component.legoSets).toEqual([{
             name: 'set',
             id: 0
@@ -65,7 +65,7 @@ describe('legoSets Component tests', () => {
         component.deleteSet(id);
 
         // then
-        expect(legoSetsServiceMock.deleteHttp).toHaveBeenCalledWith(id);
+        expect(legoSetsServiceMock.delete).toHaveBeenCalledWith(id);
     });
 
     it('should navigate to details', fakeAsync(inject([Location], (location: Location) => {

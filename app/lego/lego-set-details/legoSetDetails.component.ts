@@ -48,7 +48,7 @@ export class LegoSetDetailsComponent {
     }
 
     showLegoSetDetailsById(legoSetId: number) {
-        this.legoSetService.findOneHttp(legoSetId).subscribe((res) => {
+        this.legoSetService.findOne(legoSetId).subscribe((res) => {
             this.currentLegoSet = res;
         }, (error) => {
             console.error(error.statusText);
@@ -62,10 +62,10 @@ export class LegoSetDetailsComponent {
 
     save(): void {
         if (this.currentLegoSet.id === undefined) {
-            this.legoSetService.addHttp(this.currentLegoSet)
+            this.legoSetService.add(this.currentLegoSet)
                 .subscribe(res => this.router.navigate(['lego-sets']));
         } else {
-            this.legoSetService.editHttp(this.currentLegoSet)
+            this.legoSetService.edit(this.currentLegoSet)
                 .subscribe(res => this.router.navigate(['lego-sets']));
         }
     }

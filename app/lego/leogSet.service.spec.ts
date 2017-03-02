@@ -45,7 +45,7 @@ describe('legoSet Service tests', () => {
         });
 
         // when
-        legoService.getLegoSetsHttp().subscribe((legoSets) => {
+        legoService.getLegoSets().subscribe((legoSets) => {
             // then
             expect(legoSets.length).toBe(1);
             expect(legoSets[0].id).toBe(0);
@@ -74,7 +74,7 @@ describe('legoSet Service tests', () => {
         });
 
         // when
-        legoService.findOneHttp(id).subscribe((legoSet) => {
+        legoService.findOne(id).subscribe((legoSet) => {
             // then
             expect(legoSet.id).toBe(id);
             expect(legoSet.name).toBe('set1');
@@ -101,7 +101,7 @@ describe('legoSet Service tests', () => {
         });
 
         // when
-        legoService.addHttp(requestBody).subscribe((response) => {
+        legoService.add(requestBody).subscribe((response) => {
             // then
             expect(response.status).toBe(200);
         });
@@ -127,7 +127,7 @@ describe('legoSet Service tests', () => {
         });
 
         // when
-        legoService.editHttp(requestBody).subscribe((response) => {
+        legoService.edit(requestBody).subscribe((response) => {
             // then
             expect(response.status).toBe(200);
         });
@@ -145,7 +145,7 @@ describe('legoSet Service tests', () => {
         });
 
         // when
-        legoService.deleteHttp(id).subscribe((response) => {
+        legoService.delete(id).subscribe((response) => {
             // then
             expect(response.status).toBe(200);
         });

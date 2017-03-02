@@ -13,12 +13,12 @@ export class DashboardComponent {
     legoShopSets: LegoShopSet[];
 
     constructor(
-        private legoSetService: LegoShopService,
+        private legoShopService: LegoShopService,
         private route: ActivatedRoute,
         private router: Router
     ) {
         route.params.subscribe(val => {
-            this.legoSetService.getTop3Sets().subscribe((res) => {
+            this.legoShopService.getTop3Sets().subscribe((res) => {
                 this.legoShopSets = res;
             });
         });

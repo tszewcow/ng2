@@ -17,7 +17,7 @@ export class LegoSetsComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        this.legoSetService.getLegoSetsHttp().subscribe((res) => {
+        this.legoSetService.getLegoSets().subscribe((res) => {
             this.legoSets = res;
         });
     }
@@ -27,8 +27,8 @@ export class LegoSetsComponent implements OnInit {
     }
 
     deleteSet(id: number) {
-        this.legoSetService.deleteHttp(id).subscribe((res) => {
-            this.legoSetService.getLegoSetsHttp().subscribe((data) => {
+        this.legoSetService.delete(id).subscribe((res) => {
+            this.legoSetService.getLegoSets().subscribe((data) => {
                 this.legoSets = data;
             });
         });
