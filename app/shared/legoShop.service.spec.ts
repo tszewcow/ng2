@@ -8,6 +8,7 @@ import {
 } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 import { LegoShopService } from './legoShop.service';
+import { LegoShopOfflineService } from './legoShopOffline.service';
 
 describe('LegoShopService', () => {
 
@@ -16,7 +17,7 @@ describe('LegoShopService', () => {
         TestBed.configureTestingModule({
             imports: [HttpModule],
             providers: [
-                LegoShopService,
+                { provide: LegoShopService, useClass: LegoShopOfflineService },
                 {
                     provide: Http,
                     useFactory: (mockBackend: MockBackend, options: BaseRequestOptions) => {
