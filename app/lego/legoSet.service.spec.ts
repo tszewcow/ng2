@@ -101,7 +101,7 @@ describe('legoSet Service tests', () => {
         });
 
         // when
-        legoService.add(requestBody).subscribe((response) => {
+        legoService.save(requestBody).subscribe((response) => {
             // then
             expect(response.status).toBe(200);
         });
@@ -127,7 +127,7 @@ describe('legoSet Service tests', () => {
         });
 
         // when
-        legoService.edit(requestBody).subscribe((response) => {
+        legoService.save(requestBody).subscribe((response) => {
             // then
             expect(response.status).toBe(200);
         });

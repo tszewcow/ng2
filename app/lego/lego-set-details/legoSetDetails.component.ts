@@ -1,13 +1,16 @@
 import { LegoSet, Status } from './../LegoSet';
 import { LegoSetService } from './../legoSet.service';
 import { LegoShopService } from './../../shared/legoShop.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+
+
+
 
 @Component({
     template: require('app/lego/lego-set-details/legoSetDetails.component.html!text')
 })
-export class LegoSetDetailsComponent {
+export class LegoSetDetailsComponent implements OnInit {
 
     currentLegoSet: LegoSet = new LegoSet();
     statuses: string[] = [Status[Status.New], Status[Status.Used]];
@@ -17,9 +20,11 @@ export class LegoSetDetailsComponent {
         private legoShopService: LegoShopService,
         private route: ActivatedRoute,
         private router: Router
-    ) {
+    ) {}
 
-        route.params.subscribe(val => {
+
+    ngOnInit() {
+        this.route.params.subscribe(val => {
             let legoSetId: number = +this.route.snapshot.params['legoSetId'];
             let legoShopSetId: string = this.route.snapshot.params['legoShopSetId'];
 
@@ -32,28 +37,33 @@ export class LegoSetDetailsComponent {
                 this.showLegoSetDetailsById(legoSetId);
             }
         });
+
+    }
+
+    private navigateToErrorHandler(toPath: string): (error: any) => void {
+        return (error) => {
+                console.error(error.statusText);
+                this.router.navigate([toPath]);
+            };
     }
 
     showLegoSetDetailsByLegoShopSetId(legoShopSetId: string) {
-        this.legoShopService.findOne(legoShopSetId).subscribe((legoShopSet) => {
-            this.currentLegoSet = new LegoSet();
-            this.currentLegoSet.externalId = legoShopSet.set_id;
-            this.currentLegoSet.name = legoShopSet.descr;
-            this.currentLegoSet.imagePath = legoShopSet.img_tn;
-            this.currentLegoSet.status = Status[Status.New];
-        }, (error) => {
-            console.error(error.statusText);
-            this.router.navigate(['dashboard']);
-        });
+        this.legoShopService.findOne(legoShopSetId)
+            .subscribe((legoShopSet) => {
+                this.currentLegoSet = <LegoSet>{
+                    externalId: legoShopSet.set_id,
+                    name: legoShopSet.descr,
+                    imagePath: legoShopSet.img_tn,
+                    status: Status[Status.New]
+                };
+            }, this.navigateToErrorHandler('dashboard'));
     }
 
     showLegoSetDetailsById(legoSetId: number) {
-        this.legoSetService.findOne(legoSetId).subscribe((res) => {
-            this.currentLegoSet = res;
-        }, (error) => {
-            console.error(error.statusText);
-            this.router.navigate(['lego-set-details']);
-        });
+        this.legoSetService.findOne(legoSetId)
+            .subscribe((res) => {
+                this.currentLegoSet = res;
+            }, this.navigateToErrorHandler('lego-set-details'));
     }
 
     onStatusChange(newValue: string): void {
@@ -61,12 +71,7 @@ export class LegoSetDetailsComponent {
     }
 
     save(): void {
-        if (this.currentLegoSet.id === undefined) {
-            this.legoSetService.add(this.currentLegoSet)
-                .subscribe(res => this.router.navigate(['lego-sets']));
-        } else {
-            this.legoSetService.edit(this.currentLegoSet)
-                .subscribe(res => this.router.navigate(['lego-sets']));
-        }
+        this.legoSetService.save(this.currentLegoSet)
+            .subscribe(res => this.router.navigate(['lego-sets']));
     }
 }

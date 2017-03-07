@@ -1,6 +1,6 @@
 import { LegoSet } from './LegoSet';
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import {Response, Http} from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
@@ -8,28 +8,38 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class LegoSetService {
 
+    private readonly setsApiBaseUrl = '/services/lego-sets';
+
     constructor(private http: Http) { };
 
     getLegoSets(): Observable<LegoSet[]> {
-        return this.http.get('/services/lego-sets')
+        return this.http.get(this.setsApiBaseUrl)
             .map(res => res.json());
     }
 
     findOne(id: number): Observable<LegoSet> {
-        return this.http.get(`/services/lego-sets/${id}`)
+        return this.http.get(`${this.setsApiBaseUrl}/${id}`)
             .map(res => res.json());
     }
 
-    add(legoSet: LegoSet): Observable<any> {
+    private add(legoSet: LegoSet): Observable<Response> {
         legoSet.imagePath = 'images/lego_placeholder.png';
-        return this.http.post('/services/lego-sets', legoSet);
+        return this.http.post(this.setsApiBaseUrl, legoSet);
     }
 
-    edit(legoSet: LegoSet): Observable<any> {
-        return this.http.put(`/services/lego-sets/${legoSet.id}`, legoSet);
+    private edit(legoSet: LegoSet): Observable<Response> {
+        return this.http.put(`${this.setsApiBaseUrl}/${legoSet.id}`, legoSet);
     }
 
-    delete(id: number): Observable<any> {
-        return this.http.delete(`/services/lego-sets/${id}`);
+    save(legoSet: LegoSet): Observable<Response> {
+        if (legoSet.id === undefined || legoSet.id === null) {
+            return this.add(legoSet);
+        } else {
+            return this.edit(legoSet);
+        }
+    }
+
+    delete(id: number): Observable<Response> {
+        return this.http.delete(`${this.setsApiBaseUrl}/${id}`);
     }
 }

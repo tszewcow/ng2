@@ -3,6 +3,8 @@ import { LegoSet } from '../LegoSet';
 import { LegoSetService } from '../legoSet.service';
 import { Component, OnInit } from '@angular/core';
 
+import 'rxjs/add/operator/mergeMap';
+
 
 @Component({
     template: require('app/lego/lego-sets/legoSets.component.html!text')
@@ -14,7 +16,7 @@ export class LegoSetsComponent implements OnInit {
     constructor(
         private legoSetService: LegoSetService,
         private router: Router
-    ) { }
+    ) {}
 
     ngOnInit(): void {
         this.legoSetService.getLegoSets().subscribe((res) => {
@@ -27,11 +29,11 @@ export class LegoSetsComponent implements OnInit {
     }
 
     deleteSet(id: number) {
-        this.legoSetService.delete(id).subscribe((res) => {
-            this.legoSetService.getLegoSets().subscribe((data) => {
+        this.legoSetService.delete(id)
+            .flatMap(res => this.legoSetService.getLegoSets())
+            .subscribe(data => {
                 this.legoSets = data;
             });
-        });
     }
 
 }

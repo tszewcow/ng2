@@ -1,0 +1,33 @@
+@media (max-width: 767px) {
+    :host .thumbnail {
+        text-align: center;
+    }
+}
+@media (min-width: 768px) {
+    :host .thumbnail {
+       text-align: right;
+    }    
+    :host .thumbnail img {
+        height: 100px;
+    }
+}
+
+@media (min-width: 768px) {
+    :host .add-info {
+       text-align: right;
+    }    
+}
+
+:host .list-row {
+    padding: 10px;
+    cursor: pointer;
+}
+
+:host .list-row:hover {
+    background-color: rgba(199, 232, 243, 0.58);
+}
+
+:host .set-name {
+    font-weight: bold;
+}
+

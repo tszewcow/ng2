@@ -14,6 +14,7 @@ import {
 import { MockBackend } from '@angular/http/testing';
 import { LegoShopSetsComponent } from './legoShopSets.component';
 import { LegoShopService } from './../../shared/legoShop.service';
+import { LegoShopOfflineService } from './../../shared/legoShopOffline.service';
 
 describe('Component: LegoShop', function () {
   let fixture: ComponentFixture<LegoShopSetsComponent>;
@@ -24,7 +25,7 @@ describe('Component: LegoShop', function () {
       imports: [ RouterTestingModule ],
       declarations: [LegoShopSetsComponent],
       providers: [
-        LegoShopService,
+        { provide: LegoShopService, useClass: LegoShopOfflineService },
         {
           provide: Http,
           useFactory: (mockBackend: MockBackend, options: BaseRequestOptions) => {
