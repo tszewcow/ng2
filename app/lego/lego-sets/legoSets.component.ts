@@ -16,7 +16,7 @@ export class LegoSetsComponent implements OnInit {
     constructor(
         private legoSetService: LegoSetService,
         private router: Router
-    ) { }
+    ) {}
 
     ngOnInit(): void {
         this.legoSetService.getLegoSets().subscribe((res) => {

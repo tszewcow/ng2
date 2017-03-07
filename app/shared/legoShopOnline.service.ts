@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, URLSearchParams, RequestOptions, Response } from '@angular/http';
+import { Http, URLSearchParams, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
@@ -7,6 +7,7 @@ import 'rxjs/add/operator/filter';
 
 import { LegoShopSet } from './LegoShopSet';
 import { LegoShopService } from './legoShop.service';
+import { toJson, loggingErrorProxy }  from './utils';
 
 @Injectable()
 export class LegoShopOnlineService implements LegoShopService {
@@ -19,6 +20,7 @@ export class LegoShopOnlineService implements LegoShopService {
 
     constructor(private http: Http) { };
 
+
     getLegoSets(query?: string): Observable<LegoShopSet[]> {
         const options = this.buildRequestOptions({
             query: query,
@@ -26,9 +28,11 @@ export class LegoShopOnlineService implements LegoShopService {
         });
 
         return this.http.get(this.rebrickableApiUrl + this.searchApiService, options)
-            .map(this.extractDataLegoSets)
-            .catch(this.handleError);
+            .map(toJson)
+            .map(body => body.results || {})
+            .catch(loggingErrorProxy);
     }
+
 
     findOne(id: string): Observable<LegoShopSet> {
          const options = this.buildRequestOptions({
@@ -36,8 +40,9 @@ export class LegoShopOnlineService implements LegoShopService {
         });
 
         return this.http.get(this.rebrickableApiUrl + this.getSetApiService, options)
-            .map(this.extractDataLegoOneSet)
-            .catch(this.handleError);
+            .map(toJson)
+            .map(body => body[0] || {})
+            .catch(loggingErrorProxy);
     }
 
 
@@ -64,29 +69,4 @@ export class LegoShopOnlineService implements LegoShopService {
         });
     }
 
-
-    // Review: Predicates in independent module?
-    private extractDataLegoOneSet(res: Response) {
-        let body = res.json();
-        return body[0] || {};
-    }
-
-    private extractDataLegoSets(res: Response) {
-        let body = res.json();
-        return body.results || {};
-    }
-
-    private handleError(error: Response | any) {
-        // In a real world app, we might use a remote logging infrastructure
-        let errMsg: string;
-        if (error instanceof Response) {
-            const body = error.json() || '';
-            const err = body.error || JSON.stringify(body);
-            errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
-        } else {
-            errMsg = error.message ? error.message : error.toString();
-        }
-        console.error(errMsg);
-        return Observable.throw(errMsg);
-    }
 }

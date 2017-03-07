@@ -1,13 +1,14 @@
-import { LegoShopSet } from './LegoShopSet';
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/first';
 
+import { LegoShopSet } from './LegoShopSet';
 import { LegoShopService } from './legoShop.service';
+import { toJson, loggingErrorProxy }  from './utils';
 
 @Injectable()
 export class LegoShopOfflineService implements LegoShopService {
@@ -20,9 +21,10 @@ export class LegoShopOfflineService implements LegoShopService {
 
     getLegoSets(query?: string): Observable<LegoShopSet[]> {
         return this.http.get(this.jsonServerApiUrl + this.jsonServerSearchApiService)
-            .map(this.extractDataLegoSets)
+            .map(toJson)
+            .map(body => body.results || {})
             .map(legoShopSets => this.filterByQuery(legoShopSets, query))
-            .catch(this.handleError);
+            .catch(loggingErrorProxy);
     }
 
     findOne(id: string): Observable<LegoShopSet> {
@@ -39,10 +41,10 @@ export class LegoShopOfflineService implements LegoShopService {
 
     private filterByQuery(legoShopSets: LegoShopSet[], query?: string): LegoShopSet[] {
         return legoShopSets.filter(val => {
-            if (query) {
-                return val && val.descr && val.descr.toUpperCase().indexOf(query.toUpperCase()) !== -1;
+            if (!query) {
+                return true;
             }
-            return true;
+            return val && val.descr && val.descr.toUpperCase().indexOf(query.toUpperCase()) !== -1;
         });
     }
 
@@ -50,23 +52,4 @@ export class LegoShopOfflineService implements LegoShopService {
         return legoShopSets.filter(val => val && val.set_id && val.set_id === id)[0];
     }
 
-
-    private extractDataLegoSets(res: Response): LegoShopSet[] {
-        let body = res.json();
-        return body.results || {};
-    }
-
-    private handleError(error: Response | any) {
-        // In a real world app, we might use a remote logging infrastructure
-        let errMsg: string;
-        if (error instanceof Response) {
-            const body = error.json() || '';
-            const err = body.error || JSON.stringify(body);
-            errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
-        } else {
-            errMsg = error.message ? error.message : error.toString();
-        }
-        console.error(errMsg);
-        return Observable.throw(errMsg);
-    }
 }
