@@ -10,7 +10,7 @@ import { LegoShopService } from './legoShop.service';
 import { toJson, loggingErrorProxy }  from './utils';
 
 @Injectable()
-export class LegoShopOnlineService implements LegoShopService {
+export class LegoShopOnlineService extends LegoShopService {
 
     // Rebrickable API
     private readonly rebrickableApiUrl = 'https://rebrickable.com/api/';
@@ -18,7 +18,9 @@ export class LegoShopOnlineService implements LegoShopService {
     private readonly getSetApiService = 'get_set';
 
 
-    constructor(private http: Http) { };
+    constructor(private http: Http) {
+        super();
+    };
 
 
     getLegoSets(query?: string): Observable<LegoShopSet[]> {

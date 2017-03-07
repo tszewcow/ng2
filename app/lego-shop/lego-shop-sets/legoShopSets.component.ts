@@ -6,7 +6,8 @@ import { LegoShopService } from './../../shared/legoShop.service';
 // Review: table? - a bit old school, where is Bootstrap? :D
 
 @Component({
-  template: require('app/lego-shop/lego-shop-sets/legoShopSets.component.html!text')
+  template: require('app/lego-shop/lego-shop-sets/legoShopSets.component.html!text'),
+  styles: [require('app/lego-shop/lego-shop-sets/legoShopSets.component.css!text')]
 })
 export class LegoShopSetsComponent implements OnInit {
 

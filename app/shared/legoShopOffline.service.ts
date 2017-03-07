@@ -11,13 +11,15 @@ import { LegoShopService } from './legoShop.service';
 import { toJson, loggingErrorProxy }  from './utils';
 
 @Injectable()
-export class LegoShopOfflineService implements LegoShopService {
+export class LegoShopOfflineService extends LegoShopService {
 
     // JSON-SERVER API
     private readonly jsonServerApiUrl = '/services/';
     private readonly jsonServerSearchApiService = 'lego-shop-sets/';
 
-    constructor(private http: Http) { };
+    constructor(private http: Http) {
+        super();
+    };
 
     getLegoSets(query?: string): Observable<LegoShopSet[]> {
         return this.http.get(this.jsonServerApiUrl + this.jsonServerSearchApiService)
